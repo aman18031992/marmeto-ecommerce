@@ -1,0 +1,43 @@
+{
+  "name": "marmeto_assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bin/www",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.1",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "fast-csv": "^2.4.1",
+    "mongoose": "^5.1.4",
+    "axios": "^0.16.1",
+    "prop-types": "^15.5.10",
+    "react": "^16.0.0",
+    "react-custom-scrollbars": "^4.1.1",
+    "react-dom": "^16.0.0",
+    "react-transition-group": "^1.1.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^6.4.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^0.11.2",
+    "node-sass": "^4.9.1",
+    "react-paginate": "^5.2.3",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.12.0",
+    "webpack-cli": "^3.0.8"
+  }
+}
