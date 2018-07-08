@@ -30,7 +30,7 @@ class Product extends Component{
         return(
             <div className="product">
                 <div className="product-image">
-                    <img src={image} alt={this.props.name} onClick={this.quickView.bind(this, image, name, price, id)}/>
+                    <img src={image} alt={this.props.name}/>
                 </div>
                 <h4 className="product-name">{this.props.name}</h4>
                 <p className="product-price">{this.props.price}</p>

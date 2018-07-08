@@ -4,7 +4,6 @@ import axios from 'axios';
 import Products from './components/Products';
 import Searchbar from './components/Searchbar'
 import './scss/style.scss';
-import QuickView from './components/QuickView';
 import ReactPaginate from 'react-paginate';
 
 class App extends Component{
@@ -25,8 +24,7 @@ class App extends Component{
 	getProducts(page){
 	
 		axios.get("http://localhost:3002/api/v1/marmeto/products?limit="+this.state.limit+"&page="+page)
-			.then(response => {
-				console.log("getting response", response.data);
+			.then(response => {		
 				this.setState({
 					products : response.data.products,
 					totalpage:response.data.count
@@ -60,25 +58,20 @@ class App extends Component{
    }
 
    handleSearch(searchText) {
-   	
-      console.log("searchText",searchText);
-      axios.get('/find/product',{},)
+   	this.setState({
+   		result:searchText
+   	})
+   	console.log(this.state.result)
    }
-
    
 
 	render() {
-	
 		return (
-			      
 			<div className="container">
-				<Searchbar handleTextSearch={this.handleSearch}/>
+				<Searchbar handles={this.handleSearch}/>
 				<Products productsList={this.state.products} openModal={this.openModal}  />
-				<QuickView product={this.state.quickViewProduct} openModal={this.state.modalActive} closeModal={this.closeModal} />	
-				
-		 
-
-        <ReactPaginate previousLabel={"previous"}
+		 		<div className="reactpaginate">
+          	    <ReactPaginate previousLabel={"previous"}
                        nextLabel={"next"}
                        breakLabel={<a href="">...</a>}
                        breakClassName={"break-me"}
@@ -89,8 +82,9 @@ class App extends Component{
                        containerClassName={"pagination"}
                        subContainerClassName={"pages pagination"}
                        activeClassName={"active"} />
-					
-			</div>
+					</div>
+				</div>      
+			
 		)
 	}
 

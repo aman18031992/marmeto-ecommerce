@@ -1,37 +1,43 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 class Searchbar extends Component{
     constructor(){
         super();
-        this.state  = {text:""}
+        this.state  = {text:""}                    
     }
 
      handleTextChange (event) {
-      console.log("textchange",event.target.value)
-       this.setState({text:event.target.value});
-     }
+      const searchtxt=this.refs.seachsku.value
+      const url='http://localhost:3002/api/v1/marmeto/products/search?searchtext='+searchtxt;
+      axios.get(url).then(res =>{
+        this.setState({
+          searchresult:res.data
+        })
+      this.props.handles(this.state.searchresult);
+      alert(JSON.stringify(this.state.searchresult));
+      })
+    }
+     render(){
+        const parentstyle={
+            float:'none',
+            backgroundColor:'#e7e7e7'
+        }
+        return (
+            <div className="row" style={parentstyle}>
+                <div className="search-container">
+                  <div className="form-inline">
+                      <div className="form-group">
+                        <input type="text" ref='seachsku' className="form-control seachsku"  placeholder="Search By SKU" />
+                      </div>
+                      <button type="submit" className="btn btn-default submitbtn" onClick={this.handleTextChange.bind(this)}>Submit</button>
+                  </div>
 
-    render(){
+                  </div>
+                  </div>
+               );
         
-        
-        return(
-            <div className="row">
-            <div className="col-md-12">
-                <h2>search field</h2>
-                <div id="custom-search-input">
-                    <div className="input-group col-md-12">
-                        <input type="text" className="form-control input-lg" placeholder="search here product by SKU" onChange={this.handleTextChange.bind(this)} />
-                        <span className="input-group-btn">
-                            <button className="btn btn-info btn-lg" type="button" onClick={this.props.handleTextSearch(this.state.text)}>
-                                <i className="glyphicon glyphicon-search"></i>
-                            
-                            </button>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>    
-        )
+      
     }
 }
 
